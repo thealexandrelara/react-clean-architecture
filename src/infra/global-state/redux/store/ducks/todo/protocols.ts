@@ -1,0 +1,4 @@
+export enum TodoTypes {
+  CREATE_TODO_REQUEST = '@todos/CREATE_TODO_REQUEST',
+  CREATE_TODO_SUCCESS = '@todos/CREATE_TODO_SUCCESS',
+}
