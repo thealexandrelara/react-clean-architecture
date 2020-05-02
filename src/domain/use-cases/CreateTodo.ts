@@ -1,4 +1,4 @@
-import { TodoModel } from '@/domain/models/Todo'
+import { TodoModel } from 'domain/models/Todo'
 
 export type CreateTodoParams = Omit<TodoModel, 'id'>
 export interface CreateTodo {
