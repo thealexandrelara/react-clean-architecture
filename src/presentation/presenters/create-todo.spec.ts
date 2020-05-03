@@ -15,6 +15,9 @@ describe('Create Todo Presenter', () => {
     const createSpy = jest.spyOn(createTodoStub, 'create')
     sut.create({ text: 'any_text' })
 
-    expect(createSpy).toHaveBeenCalledWith({ text: 'any_text' })
+    expect(createSpy).toHaveBeenCalledWith({
+      text: 'any_text',
+      isCompleted: false,
+    })
   })
 })

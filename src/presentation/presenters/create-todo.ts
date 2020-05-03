@@ -1,9 +1,14 @@
 import { CreateTodo } from 'domain/use-cases/CreateTodo'
-import { CreateTodoParams } from './create-todo-protocols'
+import { CreateTodoPresenterParams } from './create-todo-protocols'
+import { CreateTodoParams } from 'domain/use-cases/CreateTodo'
 export class CreateTodoPresenter {
   constructor(private readonly createTodo: CreateTodo) {}
 
-  create(todo: CreateTodoParams) {
-    this.createTodo.create(todo)
+  create(todo: CreateTodoPresenterParams) {
+    const parsedTodo: CreateTodoParams = {
+      ...todo,
+      isCompleted: false,
+    }
+    this.createTodo.create(parsedTodo)
   }
 }

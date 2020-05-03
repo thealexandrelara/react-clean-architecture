@@ -1,3 +1,3 @@
-export type CreateTodoParams = {
+export type CreateTodoPresenterParams = {
   text: string
 }
