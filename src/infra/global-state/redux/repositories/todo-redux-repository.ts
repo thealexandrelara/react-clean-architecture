@@ -4,7 +4,7 @@ import {
   createTodo,
   removeTodo,
   editTodo,
-} from 'infra/global-state/redux/store/ducks/todos/actions'
+} from '../store/ducks/todos/actions'
 import { CreateTodoParams } from 'domain/use-cases/CreateTodo'
 import { CreateTodoRepository } from 'data/protocols/global-state/create-todo'
 import { RemoveTodoRepository } from 'data/protocols/global-state/remove-todo'

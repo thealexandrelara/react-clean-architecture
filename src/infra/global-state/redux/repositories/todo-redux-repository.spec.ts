@@ -3,7 +3,7 @@ import {
   createTodo,
   removeTodo,
   editTodo,
-} from 'infra/global-state/redux/store/ducks/todos/actions'
+} from '../store/ducks/todos/actions'
 
 describe('Todo Redux Repository', () => {
   describe('> create', () => {
