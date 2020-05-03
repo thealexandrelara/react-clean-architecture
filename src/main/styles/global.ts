@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
-import './app.css'
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap');
 
   * {
@@ -12,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
   }
   html, body, #root {
     height: 100%;
-    background-color: #fcfcfc;
+    background-color: #3f51b5;
   }
   body {
     text-rendering: optimizeLegibility !important;
@@ -55,5 +54,3 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
   }
 `
-
-export default GlobalStyles
