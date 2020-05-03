@@ -1,4 +1,9 @@
-import { createTodo, removeTodo, editTodo } from './actions'
+import {
+  createTodo,
+  removeTodo,
+  editTodo,
+  toggleTodoCompletedStatus,
+} from './actions'
 import { TodoTypes } from './protocols'
 
 describe('Todo Actions', () => {
@@ -39,6 +44,14 @@ describe('Todo Actions', () => {
             text: 'any_text',
           },
         },
+      })
+    })
+  })
+
+  describe('> toggleTodoCompletedStatus', () => {
+    it('should return action with correct type and payload', () => {
+      expect(toggleTodoCompletedStatus()).toEqual({
+        type: TodoTypes.TOGGLE_TODO_COMPLETED_STATUS,
       })
     })
   })
