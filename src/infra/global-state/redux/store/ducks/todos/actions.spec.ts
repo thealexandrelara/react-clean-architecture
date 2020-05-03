@@ -1,4 +1,4 @@
-import { createTodo } from './actions'
+import { createTodo, removeTodo } from './actions'
 import { TodoTypes } from './protocols'
 
 describe('Todo Actions', () => {
@@ -10,6 +10,17 @@ describe('Todo Actions', () => {
           todo: {
             text: 'any_text',
           },
+        },
+      })
+    })
+  })
+
+  describe('> removeTodo', () => {
+    it('should return action with correct type and payload', () => {
+      expect(removeTodo('any_id')).toEqual({
+        type: TodoTypes.REMOVE_TODO_REQUEST,
+        payload: {
+          id: 'any_id',
         },
       })
     })
