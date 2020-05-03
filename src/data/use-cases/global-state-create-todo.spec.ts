@@ -10,8 +10,11 @@ describe('Global State Create Todo', () => {
     const createTodoRepositoryStub = new CreateTodoRepositoryStub()
     const sut = new GlobalStateCreateTodo(createTodoRepositoryStub)
     const createSpy = jest.spyOn(createTodoRepositoryStub, 'create')
-    sut.create({ text: 'any_text' })
+    sut.create({ text: 'any_text', isCompleted: false })
 
-    expect(createSpy).toHaveBeenCalledWith({ text: 'any_text' })
+    expect(createSpy).toHaveBeenCalledWith({
+      text: 'any_text',
+      isCompleted: false,
+    })
   })
 })
