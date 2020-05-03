@@ -11,7 +11,7 @@ export const Content = styled.div`
   background-color: white;
   min-height: 30rem;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 2rem 1rem;
   margin: 2rem 1rem;
 `
 
