@@ -3,6 +3,7 @@ import {
   createTodo,
   removeTodo,
   editTodo,
+  toggleTodoCompletedStatus,
 } from '../store/ducks/todos/actions'
 
 describe('Todo Redux Repository', () => {
@@ -36,6 +37,18 @@ describe('Todo Redux Repository', () => {
 
       expect(dispatchSpy).toHaveBeenCalledWith(
         editTodo('any_id', { text: 'any_text' }),
+      )
+    })
+  })
+
+  describe('> toggle', () => {
+    it('should call dispatch with correct action', () => {
+      const dispatchSpy = jest.fn()
+      const sut = new TodoReduxRepository(dispatchSpy)
+      sut.toggle()
+
+      expect(dispatchSpy).toHaveBeenCalledWith(
+        toggleTodoCompletedStatus(),
       )
     })
   })
