@@ -1,4 +1,4 @@
-import { EditTodoRepository } from 'data/protocols/global-state/create-todo'
+import { EditTodoRepository } from 'data/protocols/global-state/edit-todo'
 import { EditTodo, EditTodoParams } from 'domain/use-cases/EditTodo'
 
 export class GlobalStateEditTodo implements EditTodo {
