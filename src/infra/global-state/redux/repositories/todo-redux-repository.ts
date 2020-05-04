@@ -13,6 +13,7 @@ import { CreateTodoRepository } from 'data/protocols/global-state/create-todo'
 import { RemoveTodoRepository } from 'data/protocols/global-state/remove-todo'
 import { EditTodoRepository } from 'data/protocols/global-state/edit-todo'
 import { ToggleTodoCompletedStatusRepository } from 'data/protocols/global-state/toggle-todo-completed-status'
+import { UUIDGenerator } from 'data/protocols/random-generators/uuid-generator'
 
 export class TodoReduxRepository
   implements
@@ -20,10 +21,14 @@ export class TodoReduxRepository
     RemoveTodoRepository,
     EditTodoRepository,
     ToggleTodoCompletedStatusRepository {
-  constructor(private readonly dispatch: Dispatch) {}
+  constructor(
+    private readonly dispatch: Dispatch,
+    private readonly uuidGenerator: UUIDGenerator,
+  ) {}
 
   create(todo: CreateTodoParams) {
-    this.dispatch(createTodo(todo))
+    const id = this.uuidGenerator.generate()
+    this.dispatch(createTodo({ ...todo, id }))
   }
 
   remove(id: RemoveTodoParams) {

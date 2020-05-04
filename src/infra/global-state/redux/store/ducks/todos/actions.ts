@@ -1,11 +1,11 @@
 import { action } from 'typesafe-actions'
 
-import { CreateTodoParams } from 'domain/use-cases/CreateTodo'
+import { TodoModel } from 'domain/models/Todo'
 import { RemoveTodoParams } from 'domain/use-cases/RemoveTodo'
 import { EditTodoParams } from 'domain/use-cases/EditTodo'
 import { TodoTypes } from './protocols'
 
-export const createTodo = (todo: CreateTodoParams) =>
+export const createTodo = (todo: TodoModel) =>
   action(TodoTypes.CREATE_TODO_REQUEST, { todo })
 
 export const removeTodo = (id: RemoveTodoParams) =>
