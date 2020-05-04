@@ -56,6 +56,25 @@ describe('Todos reducer', () => {
     })
   })
 
+  it('should not update state when provided id in update todo action does not have corresponding todo', () => {
+    const currentState = {
+      ...initialState,
+      data: [
+        {
+          id: 'any_id',
+          text: 'any_text',
+          isCompleted: false,
+        },
+      ],
+    }
+    const editTodoAction = editTodo('invalid_id', {
+      text: 'another_text',
+    })
+    expect(reducer(currentState, editTodoAction)).toEqual({
+      data: [{ id: 'any_id', text: 'any_text', isCompleted: false }],
+    })
+  })
+
   it('should correctly toggle todo status in reducer state when toggle todo status action is passed', () => {
     const currentState = {
       ...initialState,
@@ -80,6 +99,23 @@ describe('Todos reducer', () => {
           isCompleted: true,
         },
       ],
+    })
+  })
+
+  it('should not update state when provided id in toggle todo completed status action does not have corresponding todo', () => {
+    const currentState = {
+      ...initialState,
+      data: [
+        {
+          id: 'any_id',
+          text: 'any_text',
+          isCompleted: false,
+        },
+      ],
+    }
+    const toggleTodoAction = toggleTodoCompletedStatus('invalid_id')
+    expect(reducer(currentState, toggleTodoAction)).toEqual({
+      data: [{ id: 'any_id', text: 'any_text', isCompleted: false }],
     })
   })
 })
