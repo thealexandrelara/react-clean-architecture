@@ -14,5 +14,5 @@ export const removeTodo = (id: RemoveTodoParams) =>
 export const editTodo = (id: string, todo: EditTodoParams) =>
   action(TodoTypes.EDIT_TODO_REQUEST, { id, todo })
 
-export const toggleTodoCompletedStatus = () =>
-  action(TodoTypes.TOGGLE_TODO_COMPLETED_STATUS)
+export const toggleTodoCompletedStatus = (id: string) =>
+  action(TodoTypes.TOGGLE_TODO_COMPLETED_STATUS, { id })

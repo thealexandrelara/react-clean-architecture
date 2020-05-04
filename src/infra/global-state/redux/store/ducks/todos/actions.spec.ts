@@ -10,11 +10,16 @@ describe('Todo Actions', () => {
   describe('> createTodo', () => {
     it('should return action with correct type and payload', () => {
       expect(
-        createTodo({ text: 'any_text', isCompleted: false }),
+        createTodo({
+          id: 'any_id',
+          text: 'any_text',
+          isCompleted: false,
+        }),
       ).toEqual({
         type: TodoTypes.CREATE_TODO_REQUEST,
         payload: {
           todo: {
+            id: 'any_id',
             text: 'any_text',
             isCompleted: false,
           },
@@ -50,8 +55,11 @@ describe('Todo Actions', () => {
 
   describe('> toggleTodoCompletedStatus', () => {
     it('should return action with correct type and payload', () => {
-      expect(toggleTodoCompletedStatus()).toEqual({
+      expect(toggleTodoCompletedStatus('any_id')).toEqual({
         type: TodoTypes.TOGGLE_TODO_COMPLETED_STATUS,
+        payload: {
+          id: 'any_id',
+        },
       })
     })
   })
