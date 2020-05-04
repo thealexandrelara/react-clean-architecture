@@ -39,7 +39,7 @@ export class TodoReduxRepository
     this.dispatch(editTodo(id, todo))
   }
 
-  toggle() {
-    this.dispatch(toggleTodoCompletedStatus())
+  toggle(id: string) {
+    this.dispatch(toggleTodoCompletedStatus(id))
   }
 }

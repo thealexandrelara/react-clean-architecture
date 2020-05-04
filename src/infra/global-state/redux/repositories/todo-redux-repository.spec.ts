@@ -74,10 +74,10 @@ describe('Todo Redux Repository', () => {
   describe('> toggle', () => {
     it('should call dispatch with correct action', () => {
       const { sut, dispatchSpy } = makeSut()
-      sut.toggle()
+      sut.toggle('any_id')
 
       expect(dispatchSpy).toHaveBeenCalledWith(
-        toggleTodoCompletedStatus(),
+        toggleTodoCompletedStatus('any_id'),
       )
     })
   })

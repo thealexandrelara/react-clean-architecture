@@ -1,3 +1,3 @@
 export interface ToggleTodoCompletedStatusRepository {
-  toggle(): void
+  toggle(id: string): void
 }
