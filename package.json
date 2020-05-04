@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "@types/react-icons": "^3.0.0",
+    "@types/react-redux": "^7.1.8",
     "@types/react-router-dom": "^5.1.5",
     "@types/uuid": "^7.0.3",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
