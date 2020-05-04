@@ -12,9 +12,12 @@ describe('Toggle Todo Completed Status Presenter', () => {
     const sut = new ToggleTodoCompleteStatusPresenter(
       toggleTodoCompleteStatusStub,
     )
-    const editSpy = jest.spyOn(toggleTodoCompleteStatusStub, 'toggle')
-    sut.toggle()
+    const toggleSpy = jest.spyOn(
+      toggleTodoCompleteStatusStub,
+      'toggle',
+    )
+    sut.toggle('any_id')
 
-    expect(editSpy).toHaveBeenCalledWith()
+    expect(toggleSpy).toHaveBeenCalledWith('any_id')
   })
 })

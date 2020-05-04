@@ -5,7 +5,7 @@ describe('Global State Toggle Todo Completed Status', () => {
   it('should call ToggleTodoCompletedStatusRepository with correct values', () => {
     class ToggleTodoCompletedStatusRepositoryStub
       implements ToggleTodoCompletedStatusRepository {
-      toggle() {}
+      toggle(id: string) {}
     }
     const toggleTodoCompletedStatusRepositoryStub = new ToggleTodoCompletedStatusRepositoryStub()
     const sut = new GlobalStateToggleTodoCompletedStatus(
@@ -15,8 +15,8 @@ describe('Global State Toggle Todo Completed Status', () => {
       toggleTodoCompletedStatusRepositoryStub,
       'toggle',
     )
-    sut.toggle()
+    sut.toggle('any_id')
 
-    expect(toggleSpy).toHaveBeenCalledWith()
+    expect(toggleSpy).toHaveBeenCalledWith('any_id')
   })
 })

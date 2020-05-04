@@ -5,7 +5,7 @@ export class ToggleTodoCompleteStatusPresenter {
     private readonly toggleTodoCompletedStatus: ToggleTodoCompletedStatus,
   ) {}
 
-  toggle() {
-    this.toggleTodoCompletedStatus.toggle()
+  toggle(id: string) {
+    this.toggleTodoCompletedStatus.toggle(id)
   }
 }

@@ -7,7 +7,7 @@ export class GlobalStateToggleTodoCompletedStatus
     private readonly toggleTodoCompletedStatusRepository: ToggleTodoCompletedStatusRepository,
   ) {}
 
-  toggle() {
-    this.toggleTodoCompletedStatusRepository.toggle()
+  toggle(id: string) {
+    this.toggleTodoCompletedStatusRepository.toggle(id)
   }
 }
