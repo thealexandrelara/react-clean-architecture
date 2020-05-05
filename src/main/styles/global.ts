@@ -18,7 +18,7 @@ export const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased !important;
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
-    color: #212121;
+    color: #616161;
     line-height: 26px;
     small {
       font-size: 18px;
