@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, RenderOptions } from '@testing-library/react'
 import { Provider } from 'react-redux'
-import { store } from 'infra/global-state/redux/store'
 
 const AllTheProviders: React.ComponentType = ({ children }) => {
+  const { store } = require('infra/global-state/redux/store')
   return <Provider store={store}>{children}</Provider>
 }
 
