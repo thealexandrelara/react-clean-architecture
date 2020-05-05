@@ -1,5 +1,7 @@
-import { createStore } from 'redux'
+import { createStore, Store } from 'redux'
 
 import { rootReducer } from './ducks'
 
-export const store = createStore(rootReducer)
+import { ApplicationState } from './protocols'
+
+export const store: Store<ApplicationState> = createStore(rootReducer)
