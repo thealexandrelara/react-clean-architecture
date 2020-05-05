@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 import Checkbox from '@material-ui/core/Checkbox'
 
 export const Container = styled.div`
@@ -66,6 +66,35 @@ export const TodoItemContainer = styled.div`
 export const TodoItemCheckbox = styled(Checkbox)`
   margin-left: -0.8rem;
 `
-export const TodoItemText = styled.p`
+
+const rotate = keyframes`
+  from {
+    bottom: 0;
+  }
+
+  to {
+    bottom: 40%;
+  }
+`
+
+const animationStyles = css`
+  animation: ${rotate} 0.2s ease-in 0.3s 1 forwards;
+`
+
+export const TodoItemText = styled.span`
   font-size: 1.2rem;
+  width: 100%;
+  position: relative;
+  width: 100%;
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    bottom: -25%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 0.1125rem;
+    background: #e0e0e0;
+  }
 `

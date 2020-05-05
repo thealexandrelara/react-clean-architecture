@@ -4,7 +4,7 @@ import { CreateTodoParams } from 'domain/use-cases/CreateTodo'
 export class CreateTodoPresenter {
   constructor(private readonly createTodo: CreateTodo) {}
 
-  create(todo: CreateTodoPresenterParams) {
+  create = (todo: CreateTodoPresenterParams) => {
     const parsedTodo: CreateTodoParams = {
       ...todo,
       isCompleted: false,
