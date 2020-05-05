@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   renderWithAllProviders,
+  screen,
   fireEvent,
 } from 'utils/tests/react-testing-library'
 
@@ -26,91 +27,74 @@ describe('Home component', () => {
   })
 
   it('should contain an input', () => {
-    const { getByPlaceholderText } = renderWithAllProviders(
-      <Home />,
-      null,
-    )
+    renderWithAllProviders(<Home />, null)
 
     expect(
-      getByPlaceholderText('Please, type your todo text here...'),
+      screen.getByPlaceholderText(
+        'Please, type your todo text here...',
+      ),
     ).toBeInTheDocument()
   })
 
   it('should contain an Add Todo button', () => {
-    const { getByRole } = renderWithAllProviders(<Home />, null)
+    renderWithAllProviders(<Home />, null)
 
-    expect(getByRole('button')).toBeInTheDocument()
+    expect(screen.getByRole('button')).toBeInTheDocument()
   })
 
   it('should not create todo with empty string', async () => {
-    const {
-      getByText,
-      getByPlaceholderText,
-      getByRole,
-    } = renderWithAllProviders(<Home />, null)
+    renderWithAllProviders(<Home />, null)
 
-    expect(getByText('0 tasks')).toBeInTheDocument()
+    expect(screen.getByText('0 tasks')).toBeInTheDocument()
 
-    const input = getByPlaceholderText(
+    const input = screen.getByPlaceholderText(
       'Please, type your todo text here...',
     )
-    const submitButton = getByRole('button')
+    const submitButton = screen.getByRole('button')
     createTodo({ input, submitButton, todoText: '' })
 
-    expect(getByText('0 tasks')).toBeInTheDocument()
+    expect(screen.getByText('0 tasks')).toBeInTheDocument()
   })
 
   it('should correctly display number of todos/tasks when a new todo is added', async () => {
-    const {
-      getByText,
-      getByPlaceholderText,
-      getByRole,
-    } = renderWithAllProviders(<Home />, null)
+    renderWithAllProviders(<Home />, null)
 
-    expect(getByText('0 tasks')).toBeInTheDocument()
+    expect(screen.getByText('0 tasks')).toBeInTheDocument()
 
-    const input = getByPlaceholderText(
+    const input = screen.getByPlaceholderText(
       'Please, type your todo text here...',
     )
-    const submitButton = getByRole('button')
+    const submitButton = screen.getByRole('button')
     createTodo({ input, submitButton, todoText: 'any_text' })
 
-    expect(getByText('1 tasks')).toBeInTheDocument()
+    expect(screen.getByText('1 tasks')).toBeInTheDocument()
   })
 
   it('should reset input value to empty string after adding a new todo', async () => {
-    const {
-      getByText,
-      getByPlaceholderText,
-      getByRole,
-    } = renderWithAllProviders(<Home />, null)
+    renderWithAllProviders(<Home />, null)
 
-    const input = getByPlaceholderText(
+    const input = screen.getByPlaceholderText(
       'Please, type your todo text here...',
     ) as HTMLInputElement
-    const submitButton = getByRole('button')
+    const submitButton = screen.getByRole('button')
     createTodo({ input, submitButton, todoText: 'any_text' })
 
     expect(input.value).toEqual('')
   })
 
   it('should display all created todos', async () => {
-    const {
-      getByText,
-      getByPlaceholderText,
-      getByRole,
-    } = renderWithAllProviders(<Home />, null)
+    renderWithAllProviders(<Home />, null)
 
-    const input = getByPlaceholderText(
+    const input = screen.getByPlaceholderText(
       'Please, type your todo text here...',
     ) as HTMLInputElement
-    const submitButton = getByRole('button')
+    const submitButton = screen.getByRole('button')
     createTodo({ input, submitButton, todoText: 'any_todo1' })
     createTodo({ input, submitButton, todoText: 'any_todo2' })
     createTodo({ input, submitButton, todoText: 'any_todo3' })
 
-    expect(getByText('any_todo1')).toBeInTheDocument()
-    expect(getByText('any_todo2')).toBeInTheDocument()
-    expect(getByText('any_todo3')).toBeInTheDocument()
+    expect(screen.getByText('any_todo1')).toBeInTheDocument()
+    expect(screen.getByText('any_todo2')).toBeInTheDocument()
+    expect(screen.getByText('any_todo3')).toBeInTheDocument()
   })
 })
