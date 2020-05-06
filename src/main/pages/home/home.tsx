@@ -17,7 +17,11 @@ import { useHomePage } from './useHomePage'
 import { UseHomePageState } from './useHomePage'
 
 export const Home = () => {
-  const { todos, createTodo }: UseHomePageState = useHomePage()
+  const {
+    todos,
+    createTodo,
+    toggleTodoCompletedStatus,
+  }: UseHomePageState = useHomePage()
   const [value, setValue] = useState('')
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -28,11 +32,23 @@ export const Home = () => {
     setValue('')
   }
 
+  const handleCheckboxClick = (id: string) => {
+    toggleTodoCompletedStatus(id)
+  }
+
   const renderTodos = () => {
     return todos.map((todo) => (
       <TodoItemContainer key={todo.id}>
-        <TodoItemCheckbox />
-        <TodoItemText>{todo.text}</TodoItemText>
+        <TodoItemCheckbox
+          checked={todo.isCompleted}
+          onChange={() => handleCheckboxClick(todo.id)}
+        />
+        <TodoItemText
+          checked={todo.isCompleted}
+          onClick={() => handleCheckboxClick(todo.id)}
+        >
+          {todo.text}
+        </TodoItemText>
       </TodoItemContainer>
     ))
   }

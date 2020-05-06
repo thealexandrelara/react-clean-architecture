@@ -82,7 +82,7 @@ describe('Home component', () => {
     expect(input.value).toEqual('')
   })
 
-  it('should display all created todos', async () => {
+  it('should display all created todos', () => {
     renderWithAllProviders(<Home />, null)
 
     const input = screen.getByPlaceholderText(
@@ -96,5 +96,22 @@ describe('Home component', () => {
     expect(screen.getByText('any_todo1')).toBeInTheDocument()
     expect(screen.getByText('any_todo2')).toBeInTheDocument()
     expect(screen.getByText('any_todo3')).toBeInTheDocument()
+  })
+
+  it('should toggle todo checkbox', () => {
+    renderWithAllProviders(<Home />, null)
+
+    const input = screen.getByPlaceholderText(
+      'Please, type your todo text here...',
+    ) as HTMLInputElement
+    const submitButton = screen.getByRole('button')
+    createTodo({ input, submitButton, todoText: 'any_todo1' })
+
+    const checkbox = screen.getByRole('checkbox')
+    expect(checkbox).toBeInTheDocument()
+
+    fireEvent.click(checkbox)
+
+    expect(checkbox).toBeChecked()
   })
 })

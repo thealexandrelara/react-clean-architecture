@@ -67,7 +67,7 @@ export const TodoItemCheckbox = styled(Checkbox)`
   margin-left: -0.8rem;
 `
 
-const rotate = keyframes`
+const checkedTodoItemTextKeyframes = keyframes`
   from {
     bottom: 0;
   }
@@ -77,24 +77,53 @@ const rotate = keyframes`
   }
 `
 
-const animationStyles = css`
-  animation: ${rotate} 0.2s ease-in 0.3s 1 forwards;
+const uncheckedTodoItemTextKeyframes = keyframes`
+  from {
+    bottom: 40%;
+  }
+
+  to {
+    bottom: 0;
+  }
 `
 
-export const TodoItemText = styled.span`
+const checkedTodoItemTextAnimationStyles = css`
+  bottom: 40%;
+`
+
+const uncheckedTodoItemTextAnimationStyles = css`
+  bottom: -25%;
+`
+
+interface TodoItemTextProps {
+  readonly checked: boolean
+}
+
+export const TodoItemText = styled.span<TodoItemTextProps>`
   font-size: 1.2rem;
   width: 100%;
   position: relative;
   width: 100%;
+  cursor: pointer;
+  ${(props) =>
+    props.checked &&
+    css`
+      color: #e0e0e0;
+    `}
 
   &::after {
     content: ' ';
     position: absolute;
-    bottom: -25%;
     left: 0;
     right: 0;
     width: 100%;
     height: 0.1125rem;
     background: #e0e0e0;
+
+    transition: bottom 0.25s ease-in-out 0s;
+    ${(props) =>
+      props.checked
+        ? checkedTodoItemTextAnimationStyles
+        : uncheckedTodoItemTextAnimationStyles}
   }
 `
