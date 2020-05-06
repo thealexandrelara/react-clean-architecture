@@ -60,31 +60,11 @@ export const TodoItemContainer = styled.div`
   display: grid;
   grid-gap: 0.25rem;
   align-items: center;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr auto;
 `
 
 export const TodoItemCheckbox = styled(Checkbox)`
   margin-left: -0.8rem;
-`
-
-const checkedTodoItemTextKeyframes = keyframes`
-  from {
-    bottom: 0;
-  }
-
-  to {
-    bottom: 40%;
-  }
-`
-
-const uncheckedTodoItemTextKeyframes = keyframes`
-  from {
-    bottom: 40%;
-  }
-
-  to {
-    bottom: 0;
-  }
 `
 
 const checkedTodoItemTextAnimationStyles = css`
@@ -119,11 +99,28 @@ export const TodoItemText = styled.span<TodoItemTextProps>`
     width: 100%;
     height: 0.1rem;
     background: #e0e0e0;
-
     transition: bottom 0.25s ease-in-out 0s;
+
     ${(props) =>
       props.checked
         ? checkedTodoItemTextAnimationStyles
         : uncheckedTodoItemTextAnimationStyles}
+  }
+`
+
+export const TodoItemDeleteButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background: #e57373;
+  margin-left: 0.5rem;
+  border: 0;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.5s ease-in, opacity 0.5s ease-in;
+
+  ${TodoItemContainer}:not(:hover) & {
+    visibility: hidden;
+    opacity: 0;
   }
 `

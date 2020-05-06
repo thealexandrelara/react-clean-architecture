@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FaPlus } from 'react-icons/fa'
+import { FaPlus, FaMinusSquare } from 'react-icons/fa'
 
 import {
   Container,
@@ -11,6 +11,7 @@ import {
   TodoItemContainer,
   TodoItemCheckbox,
   TodoItemText,
+  TodoItemDeleteButton,
 } from './styles'
 import { useHomePage } from './useHomePage'
 
@@ -21,6 +22,7 @@ export const Home = () => {
     todos,
     createTodo,
     toggleTodoCompletedStatus,
+    deleteTodo,
   }: UseHomePageState = useHomePage()
   const [value, setValue] = useState('')
 
@@ -36,6 +38,10 @@ export const Home = () => {
     toggleTodoCompletedStatus(id)
   }
 
+  const handleDeleteTodo = (id: string) => {
+    deleteTodo(id)
+  }
+
   const renderTodos = () => {
     return todos.map((todo) => (
       <TodoItemContainer key={todo.id}>
@@ -49,6 +55,12 @@ export const Home = () => {
         >
           {todo.text}
         </TodoItemText>
+        <TodoItemDeleteButton
+          onClick={() => handleDeleteTodo(todo.id)}
+          data-testid={`delete-button-${todo.text}`}
+        >
+          <FaMinusSquare color="#fff" size={14} />
+        </TodoItemDeleteButton>
       </TodoItemContainer>
     ))
   }
