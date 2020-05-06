@@ -9,7 +9,7 @@ const AllTheProviders: React.ComponentType = ({ children }) => {
 
 export const renderWithAllProviders = (
   ui: React.ReactElement,
-  options: Omit<RenderOptions, 'queries'>,
+  options?: Omit<RenderOptions, 'queries'>,
 ) => render(ui, { wrapper: AllTheProviders, ...options })
 
 // re-export everything
