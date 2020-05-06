@@ -114,4 +114,22 @@ describe('Home component', () => {
 
     expect(checkbox).toBeChecked()
   })
+
+  it('should delete todo when delete button is clicked', () => {
+    renderWithAllProviders(<Home />, null)
+
+    const input = screen.getByPlaceholderText(
+      'Please, type your todo text here...',
+    ) as HTMLInputElement
+    const submitButton = screen.getByRole('button')
+    createTodo({ input, submitButton, todoText: 'any_text' })
+
+    expect(
+      screen.getByTestId('delete-button-any_text'),
+    ).toBeInTheDocument()
+
+    fireEvent.click(screen.getByTestId('delete-button-any_text'))
+
+    expect(screen.queryByText('any_text')).not.toBeInTheDocument()
+  })
 })
