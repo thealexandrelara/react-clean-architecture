@@ -6,7 +6,6 @@ import {
 } from 'utils/tests/react-testing-library'
 
 import { Home } from './home'
-import { useHomePage, UseHomePageState } from './useHomePage'
 
 type CreateTodoContext = {
   input: HTMLElement
