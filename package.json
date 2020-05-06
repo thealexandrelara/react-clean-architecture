@@ -5,7 +5,12 @@
   "jest": {
     "coveragePathIgnorePatterns": [
       "src/domain",
-      "src/data/protocols"
+      "src/data/protocols",
+      "src/index.tsx",
+      "src/serviceWorker.ts",
+      "src/main/routes",
+      "src/main/styles",
+      "src/main/App.tsx"
     ]
   },
   "dependencies": {
