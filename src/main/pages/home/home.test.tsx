@@ -97,7 +97,7 @@ describe('Home component', () => {
     expect(screen.getByText('any_todo3')).toBeInTheDocument()
   })
 
-  it('should toggle todo checkbox', () => {
+  it('should toggle todo when user clicks on checkbox', () => {
     renderWithAllProviders(<Home />, null)
 
     const input = screen.getByPlaceholderText(
@@ -111,6 +111,24 @@ describe('Home component', () => {
 
     fireEvent.click(checkbox)
 
+    expect(checkbox).toBeChecked()
+  })
+
+  it('should toggle todo when user clicks on todo text', () => {
+    renderWithAllProviders(<Home />, null)
+
+    const input = screen.getByPlaceholderText(
+      'Please, type your todo text here...',
+    ) as HTMLInputElement
+    const submitButton = screen.getByRole('button')
+    createTodo({ input, submitButton, todoText: 'any_todo1' })
+
+    const todoText = screen.getByTestId('todo-text-any_todo1')
+    expect(todoText).toBeInTheDocument()
+    fireEvent.click(todoText)
+
+    const checkbox = screen.getByRole('checkbox')
+    expect(checkbox).toBeInTheDocument()
     expect(checkbox).toBeChecked()
   })
 

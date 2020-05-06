@@ -51,6 +51,7 @@ export const Home = () => {
         />
         <TodoItemText
           checked={todo.isCompleted}
+          data-testid={`todo-text-${todo.text}`}
           onClick={() => handleCheckboxClick(todo.id)}
         >
           {todo.text}
