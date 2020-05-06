@@ -117,7 +117,7 @@ export const TodoItemText = styled.span<TodoItemTextProps>`
     left: 0;
     right: 0;
     width: 100%;
-    height: 0.1125rem;
+    height: 0.1rem;
     background: #e0e0e0;
 
     transition: bottom 0.25s ease-in-out 0s;
