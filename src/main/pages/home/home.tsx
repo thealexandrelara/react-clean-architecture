@@ -12,6 +12,7 @@ import {
   TodoItemCheckbox,
   TodoItemText,
   TodoItemDeleteButton,
+  PageTitle,
 } from './styles'
 import { useHomePage } from './useHomePage'
 
@@ -68,6 +69,7 @@ export const Home = () => {
 
   return (
     <Container>
+      <PageTitle>Clean Todo</PageTitle>
       <Content>
         <Form onSubmit={handleSubmit}>
           <input
@@ -81,7 +83,7 @@ export const Home = () => {
             <FaPlus color="#fff" size={14} />
           </SubmitButton>
         </Form>
-        <Title>Todo List</Title>
+        <Title>Tasks</Title>
         <Subtitle>{todos.length} tasks</Subtitle>
         {renderTodos()}
       </Content>

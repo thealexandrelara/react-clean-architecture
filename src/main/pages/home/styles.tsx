@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from 'styled-components'
+import styled, { css } from 'styled-components'
 import Checkbox from '@material-ui/core/Checkbox'
 
 export const Container = styled.div`
@@ -7,8 +7,17 @@ export const Container = styled.div`
   grid-template-areas: '. content .';
 `
 
+export const PageTitle = styled.h1`
+  grid-area: content;
+  grid-row: 1;
+  justify-self: center;
+  margin: 2rem 1rem 0;
+  color: white;
+`
+
 export const Content = styled.div`
   grid-area: content;
+  grid-row: 2;
   background-color: white;
   min-height: 30rem;
   border-radius: 1rem;
