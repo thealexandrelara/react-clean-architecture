@@ -149,4 +149,11 @@ describe('Home component', () => {
 
     expect(screen.queryByText('any_text')).not.toBeInTheDocument()
   })
+
+  it('should contain an page title with correct text', () => {
+    renderWithAllProviders(<Home />, null)
+
+    const pageTitle = screen.queryByText(/clean todo/gi)
+    expect(pageTitle).toBeInTheDocument()
+  })
 })
