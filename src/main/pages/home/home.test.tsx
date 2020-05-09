@@ -26,7 +26,7 @@ describe('Home component', () => {
   })
 
   it('should contain an input', () => {
-    renderWithAllProviders(<Home />, null)
+    renderWithAllProviders(<Home />)
 
     expect(
       screen.getByPlaceholderText(
@@ -36,13 +36,13 @@ describe('Home component', () => {
   })
 
   it('should contain an Add Todo button', () => {
-    renderWithAllProviders(<Home />, null)
+    renderWithAllProviders(<Home />)
 
     expect(screen.getByRole('button')).toBeInTheDocument()
   })
 
   it('should not create todo with empty string', async () => {
-    renderWithAllProviders(<Home />, null)
+    renderWithAllProviders(<Home />)
 
     expect(screen.getByText('0 tasks')).toBeInTheDocument()
 
@@ -56,7 +56,7 @@ describe('Home component', () => {
   })
 
   it('should correctly display number of todos/tasks when a new todo is added', async () => {
-    renderWithAllProviders(<Home />, null)
+    renderWithAllProviders(<Home />)
 
     expect(screen.getByText('0 tasks')).toBeInTheDocument()
 
@@ -70,7 +70,7 @@ describe('Home component', () => {
   })
 
   it('should reset input value to empty string after adding a new todo', async () => {
-    renderWithAllProviders(<Home />, null)
+    renderWithAllProviders(<Home />)
 
     const input = screen.getByPlaceholderText(
       'Please, type your todo text here...',
@@ -82,7 +82,7 @@ describe('Home component', () => {
   })
 
   it('should display all created todos', () => {
-    renderWithAllProviders(<Home />, null)
+    renderWithAllProviders(<Home />)
 
     const input = screen.getByPlaceholderText(
       'Please, type your todo text here...',
@@ -98,7 +98,7 @@ describe('Home component', () => {
   })
 
   it('should toggle todo when user clicks on checkbox', () => {
-    renderWithAllProviders(<Home />, null)
+    renderWithAllProviders(<Home />)
 
     const input = screen.getByPlaceholderText(
       'Please, type your todo text here...',
@@ -115,7 +115,7 @@ describe('Home component', () => {
   })
 
   it('should toggle todo when user clicks on todo text', () => {
-    renderWithAllProviders(<Home />, null)
+    renderWithAllProviders(<Home />)
 
     const input = screen.getByPlaceholderText(
       'Please, type your todo text here...',
@@ -133,7 +133,7 @@ describe('Home component', () => {
   })
 
   it('should delete todo when delete button is clicked', () => {
-    renderWithAllProviders(<Home />, null)
+    renderWithAllProviders(<Home />)
 
     const input = screen.getByPlaceholderText(
       'Please, type your todo text here...',
@@ -151,7 +151,7 @@ describe('Home component', () => {
   })
 
   it('should contain an page title with correct text', () => {
-    renderWithAllProviders(<Home />, null)
+    renderWithAllProviders(<Home />)
 
     const pageTitle = screen.queryByText(/clean todo/gi)
     expect(pageTitle).toBeInTheDocument()
