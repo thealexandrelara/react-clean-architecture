@@ -25,6 +25,26 @@ export const Content = styled.div`
   margin: 2rem 1rem;
 `
 
+export const TodoListHeader = styled.div`
+  display: grid;
+  grid-template-areas:
+    'todo-list-day todo-list-tasks'
+    'todo-list-month todo-list-tasks';
+`
+
+export const TodoListDay = styled.span`
+  grid-area: todo-list-day;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #686bfb;
+`
+
+export const TodoListMonth = styled.span`
+  grid-area: todo-list-month;
+  font-size: 1rem;
+  color: #bcbdcd;
+`
+
 export const Form = styled.form`
   display: grid;
   grid-template-columns: 1fr 50px;

@@ -8,6 +8,8 @@ import {
   SubmitButton,
   Title,
   Subtitle,
+  TodoListHeader,
+  TodoListDay,
   TodoItemContainer,
   TodoItemCheckbox,
   TodoItemText,
@@ -71,6 +73,9 @@ export const Home = () => {
     <Container>
       <PageTitle>Clean Todo</PageTitle>
       <Content>
+        <TodoListHeader>
+          <TodoListDay>Thursday, 10th</TodoListDay>
+        </TodoListHeader>
         <Form onSubmit={handleSubmit}>
           <input
             name="type"
