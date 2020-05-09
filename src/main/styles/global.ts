@@ -11,7 +11,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   html, body, #root {
     height: 100%;
-    background-color: #3f51b5;
+    /* background-color: #3f51b5; */
   }
   body {
     text-rendering: optimizeLegibility !important;
@@ -22,7 +22,10 @@ export const GlobalStyles = createGlobalStyle`
     line-height: 26px;
     small {
       font-size: 18px;
-    }
+    };
+    background: linear-gradient(30deg, #F76D6E 0% 50%, #6367E9 50% 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
   }
   h1 {
     font-weight: 600;
