@@ -153,7 +153,12 @@ describe('Home component', () => {
   it('should contain an page title with correct text', () => {
     renderWithAllProviders(<Home />)
 
-    const pageTitle = screen.queryByText(/clean todo/gi)
+    const pageTitle = screen.getByText(/clean todo/gi)
     expect(pageTitle).toBeInTheDocument()
+  })
+
+  it('should correctly display formatted date', () => {
+    renderWithAllProviders(<Home />)
+    expect(screen.getByText(/thursday, 10th/i)).toBeInTheDocument()
   })
 })
