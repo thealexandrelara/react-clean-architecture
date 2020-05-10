@@ -1,19 +1,17 @@
-import React, { useState } from 'react'
-import { FaPlus, FaMinusSquare } from 'react-icons/fa'
+import React from 'react'
+import AddIcon from '@material-ui/icons/Add'
+
+import { TodoList } from './components/todo-list/todo-list'
 
 import {
   Container,
   Content,
-  Form,
-  SubmitButton,
-  Title,
-  Subtitle,
+  TodoListContent,
+  TodoListCreateTodoButton,
   TodoListHeader,
   TodoListDay,
-  TodoItemContainer,
-  TodoItemCheckbox,
-  TodoItemText,
-  TodoItemDeleteButton,
+  TodoListMonth,
+  TodoListTasksAmount,
   PageTitle,
 } from './styles'
 import { useHomePage } from './useHomePage'
@@ -21,52 +19,10 @@ import { useHomePage } from './useHomePage'
 import { UseHomePageState } from './useHomePage'
 
 export const Home = () => {
-  const {
-    todos,
-    createTodo,
-    toggleTodoCompletedStatus,
-    deleteTodo,
-  }: UseHomePageState = useHomePage()
-  const [value, setValue] = useState('')
+  const { todos, createTodo }: UseHomePageState = useHomePage()
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    if (!value) return
-
-    createTodo({ text: value })
-    setValue('')
-  }
-
-  const handleCheckboxClick = (id: string) => {
-    toggleTodoCompletedStatus(id)
-  }
-
-  const handleDeleteTodo = (id: string) => {
-    deleteTodo(id)
-  }
-
-  const renderTodos = () => {
-    return todos.map((todo) => (
-      <TodoItemContainer key={todo.id}>
-        <TodoItemCheckbox
-          checked={todo.isCompleted}
-          onChange={() => handleCheckboxClick(todo.id)}
-        />
-        <TodoItemText
-          checked={todo.isCompleted}
-          data-testid={`todo-text-${todo.text}`}
-          onClick={() => handleCheckboxClick(todo.id)}
-        >
-          {todo.text}
-        </TodoItemText>
-        <TodoItemDeleteButton
-          onClick={() => handleDeleteTodo(todo.id)}
-          data-testid={`delete-button-${todo.text}`}
-        >
-          <FaMinusSquare color="#fff" size={14} />
-        </TodoItemDeleteButton>
-      </TodoItemContainer>
-    ))
+  const handleCreateTodo = () => {
+    createTodo({ text: '' })
   }
 
   return (
@@ -75,22 +31,17 @@ export const Home = () => {
       <Content>
         <TodoListHeader>
           <TodoListDay>Thursday, 10th</TodoListDay>
+          <TodoListMonth>December</TodoListMonth>
+          <TodoListTasksAmount>
+            {todos.length} tasks
+          </TodoListTasksAmount>
+          <TodoListCreateTodoButton onClick={handleCreateTodo}>
+            <AddIcon />
+          </TodoListCreateTodoButton>
         </TodoListHeader>
-        <Form onSubmit={handleSubmit}>
-          <input
-            name="type"
-            type="text"
-            placeholder="Please, type your todo text here..."
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-          />
-          <SubmitButton type="submit">
-            <FaPlus color="#fff" size={14} />
-          </SubmitButton>
-        </Form>
-        <Title>Tasks</Title>
-        <Subtitle>{todos.length} tasks</Subtitle>
-        {renderTodos()}
+        <TodoListContent>
+          <TodoList />
+        </TodoListContent>
       </Content>
     </Container>
   )

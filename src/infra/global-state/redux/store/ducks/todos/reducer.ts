@@ -9,7 +9,7 @@ export const initialState: TodosState = {
 export const reducer = produce((draft: Draft<TodosState>, action) => {
   switch (action.type) {
     case TodoTypes.CREATE_TODO_REQUEST:
-      draft.data.push(action.payload.todo)
+      draft.data.unshift(action.payload.todo)
       return
     case TodoTypes.EDIT_TODO_REQUEST:
       draft.data = draft.data.map((todo) =>
