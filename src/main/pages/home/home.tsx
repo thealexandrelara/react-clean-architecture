@@ -19,19 +19,29 @@ import { useHomePage } from './useHomePage'
 import { UseHomePageState } from './useHomePage'
 
 export const Home = () => {
-  const { todos, createTodo }: UseHomePageState = useHomePage()
+  const {
+    todos,
+    createTodo,
+    formatDate,
+  }: UseHomePageState = useHomePage()
 
   const handleCreateTodo = () => {
     createTodo({ text: '' })
   }
+
+  const currentDate = new Date()
 
   return (
     <Container>
       <PageTitle>Clean Todo</PageTitle>
       <Content>
         <TodoListHeader>
-          <TodoListDay>Sunday, 10th</TodoListDay>
-          <TodoListMonth>May</TodoListMonth>
+          <TodoListDay>
+            {formatDate(currentDate, 'EEEE, do')}
+          </TodoListDay>
+          <TodoListMonth>
+            {formatDate(currentDate, 'LLLL')}
+          </TodoListMonth>
           <TodoListTasksAmount>
             {todos.length} tasks
           </TodoListTasksAmount>
