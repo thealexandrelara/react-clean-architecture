@@ -4,6 +4,7 @@ import {
   screen,
   fireEvent,
 } from 'utils/tests/react-testing-library'
+import { advanceTo, clear } from 'jest-date-mock'
 import { v4 } from 'uuid'
 
 import { Home } from './home'
@@ -11,26 +12,18 @@ import { mocked } from 'ts-jest/utils'
 
 jest.mock('uuid')
 
-type CreateTodoContext = {
-  input: HTMLElement
-  submitButton: HTMLElement
-  todoText: string
-}
-
-const createTodo = (context: CreateTodoContext) => {
-  const { input, submitButton, todoText } = context
-
-  fireEvent.change(input, { target: { value: todoText } })
-  fireEvent.click(submitButton)
-}
-
 describe('Home component', () => {
   beforeAll(() => {
-    v4.mockReturnValue('any_id')
+    mocked(v4).mockReturnValue('any_id')
   })
 
   beforeEach(() => {
+    jest.clearAllMocks()
     jest.resetModules()
+  })
+
+  afterEach(() => {
+    clear()
   })
 
   it('should contain an input after creating new todo', () => {
@@ -146,13 +139,15 @@ describe('Home component', () => {
   })
 
   it('should correctly display formatted day on the page', () => {
+    advanceTo(new Date('2020-05-10T12:00:00'))
     renderWithAllProviders(<Home />)
-    expect(screen.getByText(/thursday, 10th/i)).toBeInTheDocument()
+    expect(screen.getByText(/sunday, 10th/i)).toBeInTheDocument()
   })
 
   it('should correctly display formatted month on the page', () => {
+    advanceTo(new Date('2020-05-10T12:00:00'))
     renderWithAllProviders(<Home />)
-    expect(screen.getByText(/december/i)).toBeInTheDocument()
+    expect(screen.getByText(/may/i)).toBeInTheDocument()
   })
 
   it('should edit todo when user hits Enter', () => {
