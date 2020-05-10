@@ -68,7 +68,7 @@ export const TodoItem = ({ todo }: Props) => {
           value={value}
           onChange={(event) => setValue(event.target.value)}
           onBlur={(event) => handleOnInputBlur(event, todo.id)}
-          data-testid={`todo-text-${todo.text}`}
+          data-testid={`todo-text-${todo.id}`}
           checked={todo.isCompleted}
         />
       </TodoItemInputContainer>
