@@ -2,7 +2,6 @@ import React from 'react'
 import {
   renderWithAllProviders,
   screen,
-  fireEvent,
 } from 'utils/tests/react-testing-library'
 
 import { TodoItem } from './todo-item'
@@ -14,6 +13,10 @@ const makeTodo = () => ({
 })
 
 describe('Todo Item', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should display a checkbox', () => {
     const todo = makeTodo()
     renderWithAllProviders(<TodoItem todo={todo} />)
