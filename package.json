@@ -6,6 +6,7 @@
     "coveragePathIgnorePatterns": [
       "src/domain",
       "src/data/protocols",
+      "src/presentation/protocols",
       "src/index.tsx",
       "src/serviceWorker.ts",
       "src/main/routes",

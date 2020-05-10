@@ -30,8 +30,8 @@ export const Home = () => {
       <PageTitle>Clean Todo</PageTitle>
       <Content>
         <TodoListHeader>
-          <TodoListDay>Thursday, 10th</TodoListDay>
-          <TodoListMonth>December</TodoListMonth>
+          <TodoListDay>Sunday, 10th</TodoListDay>
+          <TodoListMonth>May</TodoListMonth>
           <TodoListTasksAmount>
             {todos.length} tasks
           </TodoListTasksAmount>
