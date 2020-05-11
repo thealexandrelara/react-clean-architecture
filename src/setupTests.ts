@@ -3,4 +3,5 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import 'jest-extended'
+import 'jest-date-mock'
 import '@testing-library/jest-dom/extend-expect'
