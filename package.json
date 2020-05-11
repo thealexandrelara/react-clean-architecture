@@ -3,18 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "jest": {
-    "setupFiles": [
-      "jest-date-mock"
-    ],
-    "coveragePathIgnorePatterns": [
-      "src/domain",
-      "src/data/protocols",
-      "src/presentation/protocols",
-      "src/index.tsx",
-      "src/serviceWorker.ts",
-      "src/main/routes",
-      "src/main/styles",
-      "src/main/App.tsx"
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}",
+      "!**/*-protocols.ts",
+      "!**/protocols.ts",
+      "!src/**/protocols/**",
+      "!src/domain/**"
     ]
   },
   "dependencies": {
