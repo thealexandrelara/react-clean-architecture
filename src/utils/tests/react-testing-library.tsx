@@ -12,5 +12,4 @@ export const renderWithAllProviders = (
   options?: Omit<RenderOptions, 'queries'>,
 ) => render(ui, { wrapper: AllTheProviders, ...options })
 
-// re-export everything
 export * from '@testing-library/react'
